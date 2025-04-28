@@ -1,0 +1,285 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  background: #0a0a0a; /* fundo preto */
+  min-height: 100vh;
+  color: #eaeaea;
+  padding: 20px;
+}
+
+/* Container principal */
+.App {
+  max-width: 1300px;
+  margin: auto;
+  padding: 30px;
+  background: #111111; /* fundo preto */
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); /* brilho branco */
+  backdrop-filter: blur(10px);
+}
+
+/* Título */
+h1 {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 50px;
+  color: #fff;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 8px #fff; /* branco */
+}
+
+/* Formulário */
+form {
+  background: #1c1c1c; /* fundo preto */
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 40px;
+  box-shadow: 0 0 15px #fff; /* brilho branco */
+  animation: fadeIn 1s ease;
+}
+
+form input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 20px;
+  background: #333; /* fundo cinza escuro */
+  border: 2px solid #fff; /* borda branca */
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+form input:focus {
+  outline: none;
+  background: #444; /* fundo mais claro ao focar */
+  border-color: #fff;
+}
+
+form button {
+  width: 100%;
+  background: #fff; /* botão branco */
+  color: #1e1e1e; /* texto escuro */
+  font-weight: bold;
+  padding: 15px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.4s;
+  text-transform: uppercase;
+}
+
+form button:hover {
+  background: #e6e6e6; /* fundo branco mais escuro */
+  transform: scale(1.05);
+}
+
+/* Tabela */
+table {
+  width: 100%;
+  background: #1a1a1a; /* fundo preto */
+  border-collapse: collapse;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 15px #fff; /* brilho branco */
+}
+
+thead {
+  background: #444; /* fundo cinza escuro */
+}
+
+thead th {
+  padding: 15px;
+  color: #fff; /* texto branco */
+  font-size: 1rem;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+tbody tr {
+  border-bottom: 1px solid #333; /* borda de separação */
+}
+
+tbody tr:hover {
+  background: #333; /* fundo escuro ao passar o mouse */
+  transition: 0.3s;
+}
+
+td {
+  padding: 15px;
+  color: #eaeaea; /* texto mais claro */
+}
+
+/* Botões de Ação */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+button.edit {
+  background: #fff; /* botão branco */
+  color: #1e1e1e; /* texto escuro */
+  font-weight: bold;
+  padding: 8px 14px;
+  border: 2px solid #fff; /* borda branca */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button.edit:hover {
+  background: #ccc; /* fundo branco mais escuro */
+  border-color: #1e1e1e;
+  transform: scale(1.05);
+}
+
+button.delete {
+  background: #ff4d4d; /* botão vermelho */
+  color: #fff; /* texto branco */
+  font-weight: bold;
+  padding: 8px 14px;
+  border: 2px solid #ff4d4d; /* borda vermelha */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button.delete:hover {
+  background: #e63f3f; /* fundo vermelho mais escuro */
+  border-color: #e63f3f;
+  transform: scale(1.05);
+}
+
+/* Animações */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  form {
+    padding: 20px;
+  }
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    background: #333;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 15px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+  }
+}
+
+/* Estilo para o modal customizado */
+.custom-modal {
+  max-width: 500px;  /* Limita a largura do modal a 500px */
+  width: 90%;  /* Garante que o modal ocupe 90% da largura da tela em telas pequenas */
+  margin: 20px auto 0 auto; /* Centraliza o modal na horizontal e posiciona no topo */
+  position: fixed; /* Fixa o modal na tela */
+  top: 20px; /* Distância do topo */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1050; /* Garante que o modal fique acima de tudo */
+}
+
+/* Diminuindo o tamanho da área do conteúdo do modal */
+.custom-modal .modal-content {
+  border-radius: 10px;
+  padding: 20px;
+  background: #1c1c1c; /* Fundo escuro combinando com seu tema */
+  box-shadow: 0 0 15px #fff; /* Brilho branco */
+}
+
+/* Ajuste do título do modal para caber melhor no espaço */
+.custom-modal .modal-header {
+  padding-bottom: 15px;
+  border-bottom: none;
+}
+
+/* Corpo do modal */
+.custom-modal .modal-body {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* Rodapé do modal */
+.custom-modal .modal-footer {
+  border-top: none;
+  padding-top: 10px;
+}
+
+/* Ajustando o tamanho do botão "Fechar" */
+.custom-modal .btn-close {
+  font-size: 1.2rem;
+  background: transparent;
+  border: none;
+  color: #fff;
+}
+/* Altera o fundo do overlay (fundo escuro por trás do modal) */
+.custom-modal .modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.75); /* Fundo preto com transparência */
+}
+
+/* Altera o fundo do conteúdo do modal */
+.custom-modal .modal-content {
+  background-color: #000; /* Fundo preto */
+  color: #fff; /* Cor do texto branca para contrastar com o fundo */
+}
+
+/* Altera a cor do texto no cabeçalho do modal */
+.custom-modal .modal-header .modal-title {
+  color: #fff; /* Texto do título do modal em branco */
+}
+
+/* Altera a cor do texto no corpo do modal */
+.custom-modal .modal-body {
+  color: #fff; /* Texto do corpo do modal em branco */
+}
+
+/* Altera a cor do texto no rodapé do modal */
+.custom-modal .modal-footer {
+  color: #fff; /* Texto do rodapé em branco */
+}
+

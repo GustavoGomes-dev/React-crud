@@ -4,6 +4,7 @@ import PlayerList from './components/PlayerList';
 import PlayerService from './services/PlayerService';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import { Container, Row, Col } from 'react-bootstrap';  // Importando componentes responsivos
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -65,55 +66,61 @@ function App() {
   };
 
   return (
-    <div className="App container py-5">
-      <h1 className="text-center mb-5">Gestão de Jogadores do Corinthians</h1>
+    <div className="App">
+      <Container className="py-5">
+        <h1 className="text-center mb-5">Gestão de Jogadores do Corinthians</h1>
 
-      <Button variant="primary" className="mb-4" onClick={() => handleOpenModal(null, 'add')}>
-        Adicionar Jogador
-      </Button>
-
-      <PlayerList 
-        players={players} 
-        onEdit={(player) => handleOpenModal(player, 'edit')} 
-        onDelete={(player) => handleOpenModal(player, 'delete')}
-      />
-
-      <Modal 
-        show={isModalOpen}
-        onHide={handleCloseModal}
-        centered
-        className="custom-modal"  // Classe personalizada para fundo preto
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>
-            {modalType === 'edit' && 'Editar Jogador'}
-            {modalType === 'add' && 'Adicionar Jogador'}
-            {modalType === 'delete' && 'Confirmar Exclusão'}
-          </Modal.Title>
-        </Modal.Header>
-
-        <Modal.Body>
-          {modalType === 'delete' ? (
-            <p>
-              Você tem certeza que deseja excluir o jogador{' '}
-              <strong>{playerToDelete ? playerToDelete.name : ''}</strong>?
-            </p>
-          ) : (
-            <PlayerForm playerToEdit={playerToEdit} onSave={handleSavePlayer} />
-          )}
-        </Modal.Body>
-
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseModal}>
-            Fechar
-          </Button>
-          {modalType === 'delete' && (
-            <Button variant="danger" onClick={handleDeletePlayer}>
-              Excluir
+        <Row className="justify-content-center">
+          <Col xs={12} md={6} lg={4}>
+            <Button variant="primary" className="mb-4 w-100" onClick={() => handleOpenModal(null, 'add')}>
+              Adicionar Jogador
             </Button>
-          )}
-        </Modal.Footer>
-      </Modal>
+          </Col>
+        </Row>
+
+        <PlayerList 
+          players={players} 
+          onEdit={(player) => handleOpenModal(player, 'edit')} 
+          onDelete={(player) => handleOpenModal(player, 'delete')}
+        />
+
+        <Modal 
+          show={isModalOpen}
+          onHide={handleCloseModal}
+          centered
+          className="custom-modal"  // Classe personalizada para fundo preto
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>
+              {modalType === 'edit' && 'Editar Jogador'}
+              {modalType === 'add' && 'Adicionar Jogador'}
+              {modalType === 'delete' && 'Confirmar Exclusão'}
+            </Modal.Title>
+          </Modal.Header>
+
+          <Modal.Body>
+            {modalType === 'delete' ? (
+              <p>
+                Você tem certeza que deseja excluir o jogador{' '}
+                <strong>{playerToDelete ? playerToDelete.name : ''}</strong>?
+              </p>
+            ) : (
+              <PlayerForm playerToEdit={playerToEdit} onSave={handleSavePlayer} />
+            )}
+          </Modal.Body>
+
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseModal}>
+              Fechar
+            </Button>
+            {modalType === 'delete' && (
+              <Button variant="danger" onClick={handleDeletePlayer}>
+                Excluir
+              </Button>
+            )}
+          </Modal.Footer>
+        </Modal>
+      </Container>
     </div>
   );
 }

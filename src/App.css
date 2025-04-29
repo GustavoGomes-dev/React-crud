@@ -172,16 +172,60 @@ button.delete:hover {
 
 /* Responsividade */
 @media (max-width: 768px) {
-  h1 {
-    font-size: 2.2rem;
-  }
-
-  form {
-    padding: 20px;
-  }
-
-  table, thead, tbody, th, td, tr {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
     display: block;
+    width: 100%;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 15px;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  td {
+    position: relative;
+    padding: 12px 16px 12px 50%;
+    text-align: left;
+    border-bottom: 1px solid #444;
+    color: #fff;
+  }
+
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 16px;
+    top: 12px;
+    font-weight: bold;
+    font-size: 0.75rem;
+    color: #bbb;
+    text-transform: uppercase;
+  }
+}
+@media (max-width: 575.98px) {
+  h1 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+    width: 100%;
   }
 
   thead {
@@ -190,27 +234,31 @@ button.delete:hover {
 
   tr {
     background: #333;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     border-radius: 10px;
     padding: 10px;
   }
 
   td {
-    text-align: right;
+    text-align: left;
     padding-left: 50%;
     position: relative;
+    border-bottom: 1px solid #444;
+    color: white;
   }
 
   td::before {
     content: attr(data-label);
     position: absolute;
     left: 15px;
-    color: #fff;
+    top: 12px;
+    color: #aaa;
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 }
+
 
 /* Estilo para o modal customizado */
 .custom-modal {
